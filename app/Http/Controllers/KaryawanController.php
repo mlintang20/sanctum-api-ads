@@ -60,4 +60,11 @@ class KaryawanController extends Controller
 
         return response(null, 204);
     }
+
+    public function topjoin()
+    {
+        $karyawan = DB::select('select * from karyawan order by tanggal_bergabung asc limit 3');
+
+        return $karyawan;
+    }
 }

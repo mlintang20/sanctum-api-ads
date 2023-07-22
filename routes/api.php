@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/karyawan', KaryawanController::class);
+Route::get('/topjoin', [KaryawanController::class, 'topjoin']);
