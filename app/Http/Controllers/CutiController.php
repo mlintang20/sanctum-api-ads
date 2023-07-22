@@ -14,4 +14,12 @@ class CutiController extends Controller
 
         return $karyawan;
     }
+
+    public function sisacuti()
+    {
+        $daftar_sisa_cuti = DB::select('select k.nomor_induk, k.nama, (12 - c.lama_cuti) as sisa_cuti
+                                        from karyawan k join cuti c');
+
+        return $daftar_sisa_cuti;
+    }
 }

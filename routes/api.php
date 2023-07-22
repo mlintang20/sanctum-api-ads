@@ -23,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('/karyawan', KaryawanController::class);
 Route::get('/topjoin', [KaryawanController::class, 'topjoin']);
 Route::get('/pernahcuti', [CutiController::class, 'pernahcuti']);
+Route::get('/sisacuti', [CutiController::class, 'sisacuti']);
