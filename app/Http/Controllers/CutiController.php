@@ -17,8 +17,15 @@ class CutiController extends Controller
 
     public function sisacuti()
     {
-        $daftar_sisa_cuti = DB::select('select k.nomor_induk, k.nama, (12 - c.lama_cuti) as sisa_cuti
-                                        from karyawan k join cuti c');
+        $daftar_sisa_cuti = DB::select('select k.nomor_induk, k.nama, 
+                                                12 - coalesce(
+                                                (
+                                                    select sum(lama_cuti)
+                                                    from cuti c
+                                                    where k.nomor_induk = c.nomor_induk
+                                                    group by nomor_induk
+                                                ), 0) as sisa_cuti
+                                        from karyawan k');
 
         return $daftar_sisa_cuti;
     }
