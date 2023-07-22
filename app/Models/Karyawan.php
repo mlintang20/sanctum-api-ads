@@ -11,6 +11,10 @@ class Karyawan extends Model
 
     protected $table = 'karyawan';
 
+    protected $primaryKey = 'nomor_induk';
+
+    public $incrementing = false;
+
     protected $fillable = [
         'nomor_induk',
         'nama',
